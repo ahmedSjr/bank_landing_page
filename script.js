@@ -30,3 +30,39 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+document.querySelector('.section');
+
+const selectAll = document.querySelectorAll('.section');
+const header = document.querySelector('.header');
+
+console.log(selectAll);
+
+document.getElementById('section--1');
+const allbuttons = document.getElementsByTagName('button');
+
+console.log(allbuttons);
+
+console.log(document.getElementsByClassName('btn'));
+
+//Creating and inserting elements
+
+const cooki = document.createElement('div');
+cooki.classList.add('cookie-message');
+
+// cooki.textContent = '';
+
+cooki.innerHTML =
+  'We use cookies for improvements and better performance. <button class="btn btn-close-cookie">Got It!</button>';
+header.prepend(cooki);
+// header.append(cooki.cloneNode(true));
+
+document
+  .querySelector('.btn-close-cookie')
+  .addEventListener('click', function () {
+    cooki.remove();
+  });
