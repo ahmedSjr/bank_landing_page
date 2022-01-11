@@ -137,7 +137,6 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
 };
@@ -154,7 +153,7 @@ headerObs.observe(header);
 const allSections = document.querySelectorAll('.section');
 const revelSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
+
   if (!entry.isIntersecting) return;
   else entry.target.classList.remove('section--hidden');
   observer.unobserve(entry.target);
@@ -169,6 +168,26 @@ allSections.forEach(function (section) {
   section.classList.add('section--hidden');
 });
 
+//Lazy Loading images
+const allImages = document.querySelectorAll('img[data-src]');
+const loading = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  //Loading the images
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+  observer.unobserve(entry.target);
+};
+const imageObs = new IntersectionObserver(loading, {
+  root: null,
+  threshold: 0,
+});
+
+allImages.forEach(img => imageObs.observe(img));
 // const h1 = document.querySelector('h1');
 
 // console.log(h1.querySelectorAll('.highlight'));
