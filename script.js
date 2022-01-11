@@ -185,6 +185,7 @@ const loading = function (entries, observer) {
 const imageObs = new IntersectionObserver(loading, {
   root: null,
   threshold: 0,
+  rootMargin: '+200px',
 });
 
 allImages.forEach(img => imageObs.observe(img));
