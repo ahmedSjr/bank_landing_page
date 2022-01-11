@@ -112,6 +112,13 @@ const nav = document.querySelector('.nav');
 
 nav.addEventListener('mouseover', navHover.bind(0.5));
 nav.addEventListener('mouseout', navHover.bind(1));
+
+//Apply sticky navigation
+const coords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY > coords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
 // const h1 = document.querySelector('h1');
 
 // console.log(h1.querySelectorAll('.highlight'));
