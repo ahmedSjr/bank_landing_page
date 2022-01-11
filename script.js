@@ -95,6 +95,23 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
+//Menu fading animation
+const navHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+const nav = document.querySelector('.nav');
+
+nav.addEventListener('mouseover', navHover.bind(0.5));
+nav.addEventListener('mouseout', navHover.bind(1));
 // const h1 = document.querySelector('h1');
 
 // console.log(h1.querySelectorAll('.highlight'));
