@@ -91,6 +91,7 @@ const navHover = function (e) {
   }
 };
 
+//Sticky Navigation
 const nav = document.querySelector('.nav');
 
 const header = document.querySelector('.header');
